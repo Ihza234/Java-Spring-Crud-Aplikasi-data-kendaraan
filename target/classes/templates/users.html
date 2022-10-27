@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WELCOME To My Application</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<div>
+
+    <div class="container-fluid text-center">
+        <div><h2>Aplikasi Data Kendaraan</h2></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/users/new}">Tambah Data Kendaraan</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+        <div th:if="${messagi}" class="alert alert-success text-center">
+            [[${messagi}]]
+        </div>
+        </div>
+
+    <div>
+        <table class="table table-bordered">
+
+                <th>No.Registrasi</th>
+                <th>Nama Pemilik</th>
+                <th>Alamat</th>
+                <th>Merk Kendaraan</th>
+                <th>Tahun Pembuatan</th>
+                <th>Kapasitas</th>
+                <th>Warna</th>
+                <th>Bahan Bakar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="user : ${listUsers}">
+                <tr>
+
+                    <td>[[${user.noregistasikendaraan}]]</td>
+                    <td>[[${user.namapemilik}]]</td>
+                    <td>[[${user.alamat}]]</td>
+                    <td>[[${user.merkkendaraan}]]</td>
+                    <td>[[${user.tahunpembuatan}]]</td>
+                    <td>[[${user.kpasitassilinder}]]</td>
+                    <td>[[${user.warnakendaraan}]]</td>
+                    <td>[[${user.bahanbakar}]]</td>
+                    <td>
+                        <a class="h4 mr-3" th:href="@{'/user/edit/'+ ${user.id}}">Edit</a>
+                        <a class="h4" th:href="@{'/user/delete/'+ ${user.id}}">Delete</a>
+                    </td>
+
+
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
